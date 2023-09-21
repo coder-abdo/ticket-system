@@ -4,8 +4,7 @@ This is a `Ticketing` System allow user to show all tickets, add ticket, and sho
 
 UI Design:
 
-- [UI](https://www.figma.com/file/Khv9AR825JLsasmblPErsq/React-
-  Task?type=design&node-id=1%3A7466&mode=design&t=7QVb4TF8wHQoWEF5-)
+- [UI](https://www.figma.com/file/Khv9AR825JLsasmblPErsq/React-Task?type=design&node-id=1%3A7466&mode=design&t=7QVb4TF8wHQoWEF5-)
 
 1. uses [Figma](https://www.figma.com/)
 
