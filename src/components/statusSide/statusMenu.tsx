@@ -1,9 +1,10 @@
+import { useAppSelector } from "@/app/hooks";
 import { StatusMenuItem } from "@/components/statusSide/statusMenuItem";
-import { useFetch } from "@/hooks/useFetch";
+import { useFetchStatus } from "@/hooks/useFetch";
 
 export const StatusMenu = () => {
-  // const status = ["open", "in progress", "closed"];
-  const { data, isLoading, error } = useFetch("http://localhost:8000/status");
+  const { isLoading, error } = useFetchStatus();
+  const { status } = useAppSelector((state) => state.status);
   if (isLoading) {
     return (
       <ul>
@@ -23,7 +24,7 @@ export const StatusMenu = () => {
   return (
     <ul>
       <StatusMenuItem counter={0} label="all tickets" status="all" isAll />
-      {data.map((status: { name: string; id: number }) => (
+      {status.map((status) => (
         <StatusMenuItem
           counter={0}
           label={status.name}

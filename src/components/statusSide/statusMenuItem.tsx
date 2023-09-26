@@ -13,7 +13,7 @@ export const StatusMenuItem: FC<Props> = ({
   isAll = false,
 }) => {
   return (
-    <li className="flex items-center justify-between border-b border-ligthGray py-4">
+    <li className="flex items-center justify-between border-b border-ligthGray py-4 hover:cursor-pointer">
       <span>
         {!isAll && (
           <span

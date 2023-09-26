@@ -15,9 +15,14 @@ import { BsCheckCircleFill } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { closeModal, openModal } from "@/features/addModal/addModalSlice";
+import { openCreatedModal } from "@/features/createModal/createModalSlice";
 const AddModalTicket = () => {
   const isOpen = useAppSelector((state) => state.addModal.isOpen);
   const dispatch = useAppDispatch();
+  const handleClick = () => {
+    dispatch(openCreatedModal());
+    dispatch(closeModal());
+  };
   return (
     <Dialog open={isOpen}>
       <DialogTrigger>
@@ -60,7 +65,10 @@ const AddModalTicket = () => {
           >
             cancel
           </Button>
-          <Button className="flex-1 capitalize bg-primaryBlue text-base font-semibold text-white hover:bg-primaryBlue">
+          <Button
+            onClick={handleClick}
+            className="flex-1 capitalize bg-primaryBlue text-base font-semibold text-white hover:bg-primaryBlue"
+          >
             confirm
           </Button>
         </DialogFooter>

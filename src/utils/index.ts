@@ -1,4 +1,5 @@
 import axios from "axios";
+import { z } from "zod";
 const fetchData = async (url: string) => {
   try {
     const { data } = await axios.get(url);
@@ -9,4 +10,12 @@ const fetchData = async (url: string) => {
     }
   }
 };
-export { fetchData };
+const createTicketShcema = z
+  .object({
+    subject: z.string(),
+    from: z.union([z.literal("it"), z.literal("hr"), z.literal("business")]),
+    to: z.union([z.literal("it"), z.literal("hr"), z.literal("business")]),
+    description: z.string(),
+  })
+  .required();
+export { fetchData, createTicketShcema };
