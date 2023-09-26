@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import { Sidebar } from "@/components/sidebar";
 import StatusSideBar from "@/components/statusSide";
-import Main from "@/components/main/nav";
+import Main from "@/components/main";
 
 function App() {
   return (

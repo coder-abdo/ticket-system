@@ -1,6 +1,5 @@
-import { AiOutlinePlus } from "react-icons/ai";
 import { TicketSearch } from "@/components/main/nav/ticketSearch";
-import { Button } from "@/components/ui/button";
+import { AddTicketButton } from "@/components/main/addTicketBtn";
 
 const SearchBar = () => {
   return (
@@ -13,10 +12,7 @@ const SearchBar = () => {
         my tickets
       </h5>
       <TicketSearch />
-      <Button className="bg-primaryBlue text-white hover:bg-white hover:text-primaryBlue border border-primaryBlue transition-colors">
-        <AiOutlinePlus className="text-xl mr-2" />
-        <span className="capitalize text-sm font-medium">new ticket</span>
-      </Button>
+      <AddTicketButton />
     </nav>
   );
 };

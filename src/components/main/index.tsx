@@ -3,7 +3,7 @@ import { AllTickets } from "@/components/main/allTickets";
 
 const Main = () => {
   return (
-    <section>
+    <section className="w-full">
       <SearchBar />
       <AllTickets />
     </section>
