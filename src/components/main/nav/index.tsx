@@ -1,7 +1,10 @@
 import { TicketSearch } from "@/components/main/nav/ticketSearch";
 import { AddTicketButton } from "@/components/main/addTicketBtn";
+import { useAppDispatch } from "@/app/hooks";
+import { openModal } from "@/features/addModal/addModalSlice";
 
 const SearchBar = () => {
+  const dispatch = useAppDispatch();
   return (
     <nav
       role="menubar"
@@ -12,7 +15,7 @@ const SearchBar = () => {
         my tickets
       </h5>
       <TicketSearch />
-      <AddTicketButton />
+      <AddTicketButton handleClick={() => dispatch(openModal())} />
     </nav>
   );
 };

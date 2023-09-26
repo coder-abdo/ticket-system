@@ -18,9 +18,9 @@ export const StatusMenuItem: FC<Props> = ({
         {!isAll && (
           <span
             className={`${
-              status === "closed"
+              status === "Closed"
                 ? "bg-green-500"
-                : status === "open"
+                : status === "Open"
                 ? "bg-yellow-500"
                 : "bg-primaryBlue"
             } w-2 h-2 rounded-full inline-block mr-2
