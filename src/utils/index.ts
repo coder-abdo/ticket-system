@@ -12,10 +12,10 @@ const fetchData = async (url: string) => {
 };
 const createTicketShcema = z
   .object({
-    subject: z.string(),
+    subject: z.string().nonempty(),
     from: z.union([z.literal("it"), z.literal("hr"), z.literal("business")]),
     to: z.union([z.literal("it"), z.literal("hr"), z.literal("business")]),
-    description: z.string(),
+    description: z.string().nonempty(),
   })
   .required();
 export { fetchData, createTicketShcema };

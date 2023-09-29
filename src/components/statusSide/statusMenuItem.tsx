@@ -5,15 +5,24 @@ interface Props {
   label: string;
   counter: number;
   isAll?: boolean;
+  active?: boolean;
+  onActive: () => void;
 }
 export const StatusMenuItem: FC<Props> = ({
   status,
   label,
   counter = 0,
   isAll = false,
+  active = false,
+  onActive,
 }) => {
   return (
-    <li className="flex items-center justify-between border-b border-ligthGray py-4 hover:cursor-pointer">
+    <li
+      onClick={onActive}
+      className={`flex w-full px-2  items-center justify-between border-b border-ligthGray py-4 hover:cursor-pointer ${
+        active ? "bg-[#e4edf2]" : "bg-transparent"
+      }`}
+    >
       <span>
         {!isAll && (
           <span

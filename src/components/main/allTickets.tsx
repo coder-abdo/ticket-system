@@ -1,23 +1,21 @@
-import emptyTickets from "@/assets/image.svg";
-import AddModalTicket from "@/components/main/addTicketModal";
+import { useAppSelector } from "@/app/hooks";
+import { useFetchTickets } from "@/hooks/useFetch";
+import { EmptyTickets } from "@/components/tickets/emptyTickets";
+import Tickets from "@/components/tickets";
 
 export const AllTickets = () => {
-  const data = [];
+  const { error, isLoading } = useFetchTickets();
+  const tickets = useAppSelector((state) => state.allTickets.tickets);
+  // const tickets = [] as Ticket[];
+  if (error) {
+    return <div> "something went wrong"</div>;
+  }
+  if (isLoading) {
+    return <div>loading...</div>;
+  }
   return (
     <div>
-      {data.length <= 0 && (
-        <div className="flex h-full justify-center items-center flex-col">
-          <img src={emptyTickets} alt="empty tickets" />
-          <h4 className="text-blackColor font-semibold text-[18px] capitalize">
-            no data to show
-          </h4>
-          <p className="text-sm text-mediumGray mb-8 mt-2">
-            Create a new Ticket Lorem Ipsum is simply dummy text of the printing
-            and typesetting industry.
-          </p>
-          <AddModalTicket />
-        </div>
-      )}
+      {tickets.length > 0 ? <Tickets tickets={tickets} /> : <EmptyTickets />}
     </div>
   );
 };

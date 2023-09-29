@@ -88,3 +88,7 @@
     @apply before:w-8 h-8;
   }
 }
+/*custom style for chart*/
+.apexcharts-legend {
+  display: none !important;
+}

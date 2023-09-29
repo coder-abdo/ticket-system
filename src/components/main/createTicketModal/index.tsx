@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import {
   Dialog,
   DialogContent,
@@ -10,9 +10,11 @@ import {
 import { AiFillPlusCircle, AiOutlineClose } from "react-icons/ai";
 import { ModalIcon } from "@/components/main/addTicketModal/icon";
 import { CreateTicketForm } from "@/components/main/createTicketModal/createTicketForm";
+import { closeCreatedModal } from "@/features/createModal/createModalSlice";
 
 export const CreateTicketModal = () => {
   const isOpen = useAppSelector((state) => state.createTicketModal.isOpen);
+  const dispatch = useAppDispatch();
   return (
     <Dialog open={isOpen}>
       <DialogContent className="max-w-[425px] md:max-w-[638px]">
@@ -26,7 +28,10 @@ export const CreateTicketModal = () => {
               Creating a new ticket to be sent between company departments
             </DialogDescription>
           </div>
-          <AiOutlineClose className="text-gray text-2xl" />
+          <AiOutlineClose
+            onClick={() => dispatch(closeCreatedModal())}
+            className="text-gray text-2xl hover:cursor-pointer"
+          />
         </DialogHeader>
         <CreateTicketForm />
       </DialogContent>
