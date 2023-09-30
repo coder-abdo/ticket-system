@@ -5,7 +5,6 @@ import { z } from "zod";
 import { FiUploadCloud } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAddTicket } from "@/hooks/useAddTicket";
 import {
   Select,
   SelectContent,
@@ -23,9 +22,9 @@ import { addTicketToTickets } from "@/features/tickets/ticketsSlice";
 import { queryClient } from "@/app/clientQuery";
 
 export const CreateTicketForm = () => {
-  const { getInputProps, getRootProps } = useImageDrop();
-  const { mutate } = useAddTicket();
+  const { getInputProps, getRootProps, files } = useImageDrop();
   const dispatch = useAppDispatch();
+  // console.log(files);
 
   const {
     register,
@@ -50,13 +49,10 @@ export const CreateTicketForm = () => {
       subject,
       status: "Open",
     };
-    mutate(ticket, {
-      onSuccess() {
-        dispatch(addTicketToTickets(ticket));
-        queryClient.invalidateQueries({ queryKey: ["tickets"] });
-        dispatch(closeCreatedModal());
-      },
-    });
+    console.log(values);
+    dispatch(addTicketToTickets(ticket));
+    queryClient.invalidateQueries()
+    dispatch(closeCreatedModal())
   };
 
   return (

@@ -13,7 +13,10 @@ const ticketsSlice = createSlice({
     getAllTickets(state, action: PayloadAction<Ticket[]>) {
       state.tickets = action.payload;
     },
+    addTicketToTickets(state, action: PayloadAction<Ticket>) {
+      state.tickets.push(action.payload);
+    },
   },
 });
-export const { getAllTickets } = ticketsSlice.actions;
+export const { getAllTickets, addTicketToTickets } = ticketsSlice.actions;
 export default ticketsSlice.reducer;

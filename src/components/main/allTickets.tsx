@@ -6,7 +6,6 @@ import Tickets from "@/components/tickets";
 export const AllTickets = () => {
   const { error, isLoading } = useFetchTickets();
   const tickets = useAppSelector((state) => state.allTickets.tickets);
-  // const tickets = [] as Ticket[];
   if (error) {
     return <div> "something went wrong"</div>;
   }

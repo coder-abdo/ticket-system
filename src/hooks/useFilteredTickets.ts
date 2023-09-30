@@ -9,7 +9,10 @@ export const useFilteredTickets = ({ filter }: Props) => {
   const tickets = useAppSelector((state) => state.allTickets.tickets);
   const filteredTickets =
     useMemo(
-      () => tickets?.filter((ticket) => ticket.status === filter.toLowerCase()),
+      () =>
+        tickets?.filter(
+          (ticket) => ticket.status.toLowerCase() === filter.toLowerCase(),
+        ),
       [filter, tickets],
     ) ?? [];
   queryClient.invalidateQueries(["tickets"]);

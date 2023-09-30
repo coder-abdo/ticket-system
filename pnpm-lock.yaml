@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@cloudinary/react':
-    specifier: ^1.11.2
-    version: 1.11.2(react@18.2.0)
   '@hookform/resolvers':
     specifier: ^3.3.1
     version: 3.3.1(react-hook-form@7.46.2)
@@ -83,6 +80,9 @@ dependencies:
   react-redux:
     specifier: ^8.1.2
     version: 8.1.2(@types/react-dom@18.2.7)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+  react-router-dom:
+    specifier: ^6.16.0
+    version: 6.16.0(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -383,27 +383,6 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
     dev: true
-
-  /@cloudinary/html@1.11.2:
-    resolution: {integrity: sha512-IibBZliI7MOK3dxvz0WlsEyTIsqZhY3SiCBQM0CNwCKxn3N1TO8OgetfU26Now1lJbdoF5JQ8S7Cn6ZWNuU1KA==}
-    dependencies:
-      '@types/lodash.clonedeep': 4.5.7
-      '@types/lodash.debounce': 4.0.7
-      '@types/node': 14.18.63
-      lodash.clonedeep: 4.5.0
-      lodash.debounce: 4.0.8
-      typescript: 4.9.5
-    dev: false
-
-  /@cloudinary/react@1.11.2(react@18.2.0):
-    resolution: {integrity: sha512-ZnVthMW7TExLMPmyven4N7EVr2oX2yZqnHn6EHBlni9iM0AZd6qtR8R5/SscxNLNwgBieWuvmejUlUT4LqPpMg==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^16.3.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@cloudinary/html': 1.11.2
-      react: 18.2.0
-    dev: false
 
   /@esbuild/android-arm64@0.18.20:
     resolution: {integrity: sha512-Nz4rJcchGDtENV0eMKUNa6L12zz2zBDXuhj/Vjh18zGqB44Bi7MBMSXjgunJgjRhCmKOjnPuZp4Mb6OKqtMHLQ==}
@@ -1483,6 +1462,11 @@ packages:
       reselect: 4.1.8
     dev: false
 
+  /@remix-run/router@1.9.0:
+    resolution: {integrity: sha512-bV63itrKBC0zdT27qYm6SDZHlkXwFL1xMBuhkn+X7l0+IIhNaH5wuuvZKp6eKhCD4KFhujhfhCT1YxXW6esUIA==}
+    engines: {node: '>=14.0.0'}
+    dev: false
+
   /@tanstack/query-core@4.35.3:
     resolution: {integrity: sha512-PS+WEjd9wzKTyNjjQymvcOe1yg8f3wYc6mD+vb6CKyZAKvu4sIJwryfqfBULITKCla7P9C4l5e9RXePHvZOZeQ==}
     dev: false
@@ -1518,26 +1502,6 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
-    dev: false
-
-  /@types/lodash.clonedeep@4.5.7:
-    resolution: {integrity: sha512-ccNqkPptFIXrpVqUECi60/DFxjNKsfoQxSQsgcBJCX/fuX1wgyQieojkcWH/KpE3xzLoWN/2k+ZeGqIN3paSvw==}
-    dependencies:
-      '@types/lodash': 4.14.199
-    dev: false
-
-  /@types/lodash.debounce@4.0.7:
-    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
-    dependencies:
-      '@types/lodash': 4.14.199
-    dev: false
-
-  /@types/lodash@4.14.199:
-    resolution: {integrity: sha512-Vrjz5N5Ia4SEzWWgIVwnHNEnb1UE1XMkvY5DGXrAeOGE9imk0hgTHh5GyDjLDJi9OTCn9oo9dXH1uToK1VRfrg==}
-    dev: false
-
-  /@types/node@14.18.63:
-    resolution: {integrity: sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==}
     dev: false
 
   /@types/node@20.6.3:
@@ -3544,14 +3508,6 @@ packages:
     engines: {node: '>= 4'}
     dev: false
 
-  /lodash.clonedeep@4.5.0:
-    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
-    dev: false
-
-  /lodash.debounce@4.0.8:
-    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-    dev: false
-
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
@@ -4223,6 +4179,29 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.15)(react@18.2.0)
     dev: false
 
+  /react-router-dom@6.16.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-aTfBLv3mk/gaKLxgRDUPbPw+s4Y/O+ma3rEN1u8EgEpLpPe6gNjIsWt9rxushMHHMb7mSwxRGdGlGdvmFsyPIg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.9.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-router: 6.16.0(react@18.2.0)
+    dev: false
+
+  /react-router@6.16.0(react@18.2.0):
+    resolution: {integrity: sha512-VT4Mmc4jj5YyjpOi5jOf0I+TYzGpvzERy4ckNSvSh2RArv8LLoCxlsZ2D+tc7zgjxcY34oTz2hZaeX5RVprKqA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.9.0
+      react: 18.2.0
+    dev: false
+
   /react-style-singleton@2.2.1(@types/react@18.2.15)(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
@@ -4826,12 +4805,6 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       is-typed-array: 1.1.12
-    dev: false
-
-  /typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: false
 
   /typescript@5.0.2:

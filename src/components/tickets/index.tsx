@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 interface Props {
   tickets: Ticket[];
 }
@@ -28,27 +29,34 @@ const Tickets: FC<Props> = ({ tickets }) => {
         {tickets.map((ticket) => (
           <TableRow
             key={ticket.id}
-            className="text-center text-sm text-blackColor"
+            className="text-center text-sm text-blackColor w-full"
           >
-            <TableCell className="flex gap-2 items-center">
-              <span className="bg-[#D9D9D9] w-10 h-10 rounded-full" />
-              Company Name
-            </TableCell>
-            <TableCell>{ticket.to}</TableCell>
-            <TableCell>{ticket.from}</TableCell>
-            <TableCell>Internal</TableCell>
-            <TableCell>{format(new Date(), "dd MMM yyyy")}</TableCell>
-            <TableCell
-              className={`${
-                ticket.status === "Open".toLowerCase()
-                  ? "bg-[#fcf7e9] text-[#FFD360]"
-                  : ticket.status === "Close".toLowerCase()
-                  ? "bg-[#ecfaee] text-[#5FD971]"
-                  : "bg-primaryBlue"
-              }`}
+            <Link
+              to={`/tickets/${ticket.id}`}
+              className="w-full flex justify-between"
             >
-              {ticket.status}
-            </TableCell>
+              <TableCell className="flex gap-2 items-center">
+                <span className="bg-[#D9D9D9] w-10 h-10 rounded-full" />
+                Company Name
+              </TableCell>
+            </Link>
+              <TableCell>{ticket.to}</TableCell>
+              <TableCell>{ticket.from}</TableCell>
+              <TableCell>Internal</TableCell>
+              <TableCell>
+                {format(new Date(), "dd MMM yyyy")}
+              </TableCell>
+              <TableCell
+                className={`${
+                  ticket.status.toLowerCase() === "Open".toLowerCase()
+                    ? "bg-[#fcf7e9] text-[#FFD360]"
+                    : ticket.status.toLowerCase() === "Close".toLowerCase()
+                    ? "bg-[#ecfaee] text-[#5FD971]"
+                    : "bg-[#D0D5DD] text-primaryBlue"
+                }`}
+              >
+                {ticket.status}
+              </TableCell>
           </TableRow>
         ))}
       </TableBody>

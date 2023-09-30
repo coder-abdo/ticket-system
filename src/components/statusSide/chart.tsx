@@ -1,7 +1,6 @@
 import { ApexOptions } from "apexcharts";
 import Chart from "react-apexcharts";
 import { useFilteredTickets } from "@/hooks/useFilteredTickets";
-import { useState } from "react";
 export const StatusChart = () => {
   const OpenTicketsNum = useFilteredTickets({ filter: "Open" }).length;
   const ClosedTicketsNum = useFilteredTickets({ filter: "Closed" }).length;
@@ -14,7 +13,7 @@ export const StatusChart = () => {
     InProgressTicketsNum || 0,
   ];
 
-  const [options] = useState<ApexOptions>({
+  const options: ApexOptions = {
     chart: {
       type: "donut",
       width: "100%",
@@ -30,7 +29,7 @@ export const StatusChart = () => {
         endAngle: 90,
       },
     },
-  });
+  };
 
   return (
     <div className="w-full relative pb-2">

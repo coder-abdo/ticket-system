@@ -1,20 +1,15 @@
-import Navbar from "@/components/navbar";
-import { Sidebar } from "@/components/sidebar";
-import StatusSideBar from "@/components/statusSide";
-import Main from "@/components/main";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "@/pages/home";
+import TicketPage from "@/pages/ticket";
 
 function App() {
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1 container">
-        <Navbar />
-        <main className="flex pt-4 gap-2">
-          <StatusSideBar />
-          <Main />
-        </main>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index path="/" element={<Home />} />
+        <Route path="/tickets/:id" element={<TicketPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

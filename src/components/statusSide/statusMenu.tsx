@@ -1,25 +1,23 @@
-import { useAppSelector } from "@/app/hooks";
 import { StatusMenuItem } from "@/components/statusSide/statusMenuItem";
-import { useFetchStatus } from "@/hooks/useFetch";
-import { useFilteredTickets } from "@/hooks/useFilteredTickets";
-import { useState } from "react";
-
+import { useStatusNum } from "@/hooks/useStatusNum";
 export const StatusMenu = () => {
-  const { isLoading, error } = useFetchStatus();
-  const { status } = useAppSelector((state) => state.status);
-  const [active, setActive] = useState("all");
-  const tickets = useAppSelector((state) => state.allTickets.tickets);
-  const OpenTicketsNum = useFilteredTickets({ filter: "Open" }).length ?? 0;
-  const ClosedTicketsNum = useFilteredTickets({ filter: "Closed" }).length ?? 0 ;
-  const InProgressTicketsNum = useFilteredTickets({
-    filter: "InProgress",
-  }).length ?? 0;
+  const {
+    error,
+    isLoading,
+    setActive,
+    InProgressTicketsNum,
+    active,
+    tickets,
+    OpenTicketsNum,
+    ClosedTicketsNum,
+    status,
+  } = useStatusNum();
   if (isLoading) {
     return (
       <ul>
         <StatusMenuItem
-          onActive={() => setActive(true)}
-          counter={tickets.length}
+          onActive={() => setActive("all")}
+          counter={tickets?.length ?? 0}
           label="all tickets"
           status="all"
           isAll
@@ -32,7 +30,7 @@ export const StatusMenu = () => {
     return (
       <ul>
         <StatusMenuItem
-          onActive={() => setActive(true)}
+          onActive={() => setActive("all")}
           counter={0}
           label="all tickets"
           status="all"
@@ -45,7 +43,7 @@ export const StatusMenu = () => {
   return (
     <ul className="w-full">
       <StatusMenuItem
-        counter={tickets.length}
+        counter={tickets?.length ?? 0}
         label="all tickets"
         status="all"
         isAll

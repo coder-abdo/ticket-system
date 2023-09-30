@@ -1,12 +1,14 @@
+import { useQuery } from "@tanstack/react-query";
 import { useAppDispatch } from "@/app/hooks";
 import { setStatus } from "@/features/status/statusSlice";
 import { getAllTickets } from "@/features/tickets/ticketsSlice";
-import { fetchData } from "@/utils";
-import { useQuery } from "@tanstack/react-query";
+import { fetchData, getTicket } from "@/utils";
+import { setTicket } from "@/features/ticket/ticketSlice";
 export const useFetchStatus = () => {
   const dispatch = useAppDispatch();
+  // console.log(import.meta.env.VITE_BASE_URL);
   const { data, error, isLoading } = useQuery({
-    queryFn: () => fetchData("http://localhost:8000/status"),
+    queryFn: () => fetchData(`${import.meta.env.VITE_BASE_URL}/status`),
     queryKey: ["fetch-status"],
   });
   dispatch(setStatus(data));
@@ -15,9 +17,18 @@ export const useFetchStatus = () => {
 export const useFetchTickets = () => {
   const dispatch = useAppDispatch();
   const { data, error, isLoading } = useQuery({
-    queryFn: () => fetchData("http://localhost:8000/tickets"),
+    queryFn: () => fetchData(`${import.meta.env.VITE_BASE_URL}/tickets`),
     queryKey: ["tickets"],
   });
   dispatch(getAllTickets(data));
+  return { error, isLoading };
+};
+export const useFetchTicketById = (id: number) => {
+  const dispatch = useAppDispatch();
+  const { data, error, isLoading } = useQuery({
+    queryFn: () => getTicket(`${import.meta.env.VITE_BASE_URL}/tickets`, id),
+    queryKey: ["ticket"],
+  });
+  dispatch(setTicket(data));
   return { error, isLoading };
 };
