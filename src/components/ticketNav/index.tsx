@@ -5,7 +5,7 @@ import { User } from "@/components/navbar/user";
 
 export const TicketNavigation = () => {
   return (
-    <nav className="flex justify-between items-center pl-8 py-8 pr-6">
+    <nav className="flex justify-between items-center pl-8 py-8 pr-6 shadow-sm">
       <img src={logo} alt="logo" />
       <div className="flex items-center gap-10">
         <Lang />

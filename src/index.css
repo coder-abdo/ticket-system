@@ -33,6 +33,7 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    --scrollbar-color: #1b6792;
   }
 
   .dark {
@@ -69,6 +70,18 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-color: var(--scrollbar-color);
+    scrollbar-width: thin;
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #b9bcbc;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border: 2px solid #b9bcbc;
   }
   body {
     @apply bg-background text-foreground;
