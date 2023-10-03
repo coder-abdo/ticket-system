@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
 import { StatusTickets } from "@/components/ticket/sidebar/dropDownMenu";
 import { TicketsMenu } from "@/components/ticket/sidebar/TicketsMenu";
-import { useAppSelector } from "@/app/hooks";
+import { useTickets } from "@/hooks/useTickets";
 export const TicketSidebar = () => {
-  const tickets = useAppSelector((state) => state.allTickets.tickets);
+  const { error, isLoading, tickets } = useTickets();
+  console.log(error);
   return (
     <aside className="w-80">
       <div className="flex gap-2 items-center pl-2">
@@ -16,7 +17,7 @@ export const TicketSidebar = () => {
         </Link>
         <StatusTickets />
       </div>
-      <TicketsMenu tickets={tickets} />
+      {isLoading ? <div>loading...</div> : <TicketsMenu tickets={tickets} />}
     </aside>
   );
 };
