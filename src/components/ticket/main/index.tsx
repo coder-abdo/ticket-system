@@ -29,9 +29,9 @@ export const Main: FC<Props> = ({ id }) => {
             </h3>
           </div>
         </div>
-        <div className="flex gap-3">
-          <TbPencilMinus className="text-2xl text-blackColor" />
-          <FaRegTrashCan className="text-[#FF4444]" />
+        <div className="flex gap-5 items-center">
+          <TbPencilMinus className="text-3xl text-blackColor" />
+          <FaRegTrashCan className="text-[#FF4444] text-2xl" />
         </div>
       </header>
     </div>

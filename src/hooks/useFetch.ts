@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useAppDispatch } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { setStatus } from "@/features/status/statusSlice";
 import { getAllTickets } from "@/features/tickets/ticketsSlice";
 import { fetchData, getTicket } from "@/utils";
@@ -30,5 +30,6 @@ export const useFetchTicketById = (id: number) => {
     queryKey: ["ticket"],
   });
   dispatch(setTicket(data));
-  return { error, isLoading };
+  const ticket = useAppSelector((state) => state.ticket.ticket);
+  return { error, isLoading, ticket };
 };

@@ -4,8 +4,7 @@ import { StatusTickets } from "@/components/ticket/sidebar/dropDownMenu";
 import { TicketsMenu } from "@/components/ticket/sidebar/TicketsMenu";
 import { useTickets } from "@/hooks/useTickets";
 export const TicketSidebar = () => {
-  const { error, isLoading, tickets } = useTickets();
-  console.log(error);
+  const { isLoading, tickets } = useTickets();
   return (
     <aside className="w-80">
       <div className="flex gap-2 items-center pl-2">

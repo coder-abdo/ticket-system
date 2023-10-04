@@ -1,23 +1,16 @@
 import { useParams } from "react-router-dom";
 import { TicketNavigation } from "@/components/ticketNav";
 import { TicketSidebar } from "@/components/ticket/sidebar";
-import { useFetchTicketById } from "@/hooks/useFetch";
-// import { useAppSelector } from "@/app/hooks";
+import { Main } from "@/components/ticket/main";
 const TicketPage = () => {
   const { id } = useParams();
-  const { isLoading, error } = useFetchTicketById(+id!);
-  // const ticket = useAppSelector((state) => state.ticket.ticket);
-  if (error) {
-    return <div>error in fetching data</div>;
-  }
-  if (isLoading) {
-    return <div>loading...</div>;
-  }
+
   return (
     <div>
       <TicketNavigation />
-      <main>
+      <main className="flex gap-5">
         <TicketSidebar />
+        <Main id={+id!} />
       </main>
     </div>
   );
