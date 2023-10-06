@@ -1,5 +1,5 @@
 type DepartmentType = "HR" | "IT" | "Business";
-type StatusType = "Open" | "Close" | "InProgress";
+type StatusType = "Open" | "Closed" | "InProgress";
 interface Ticket {
   subject: string;
   from: DepartmentType;

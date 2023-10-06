@@ -1,11 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface IStatue {
-  name: "Open" | "InProgress" | "Closed";
-  id: number;
-}
 interface InitialState {
-  status: IStatue[];
+  status: Status[];
 }
 const initialState: InitialState = {
   status: [],
@@ -15,7 +11,7 @@ const statusSlice = createSlice({
   initialState,
   name: "status",
   reducers: {
-    setStatus(state, action: PayloadAction<IStatue[]>) {
+    setStatus(state, action: PayloadAction<Status[]>) {
       state.status = action.payload;
     },
   },

@@ -1,39 +1,24 @@
 import type { FC } from "react";
-import { TbPencilMinus } from "react-icons/tb";
-import { FaRegTrashCan } from "react-icons/fa6";
-import { format } from "date-fns";
 import { useFetchTicketById } from "@/hooks/useFetch";
+import { Header } from "@/components/ticket/main/header";
+import { TicketDetails } from "@/components/ticket/main/ticketDetails";
 
 interface Props {
   id: number;
 }
+
 export const Main: FC<Props> = ({ id }) => {
   const { error, ticket, isLoading } = useFetchTicketById(id);
-  console.log(error, ticket, isLoading);
   if (isLoading) {
     return <div>loading...</div>;
   }
+  if (error) {
+    return <div>error in fetching data</div>;
+  }
   return (
-    <div className="py-5 px-5 shadow-sm shadow-ligthGray flex-1">
-      <header className="flex justify-between items-center border-b-[2px] border-b-[#F7F6F6]">
-        <div className="flex gap-2">
-          <div className="bg-[#68005E] w-16 h-16 rounded-full" />
-          <div className="capitalize">
-            <h2 className="text-blackColor font-medium text-xl mb-2">
-              user name
-            </h2>
-            <h3 className="text-darkGray text-sm font-medium flex items-center">
-              {format(new Date(), "dd MMM yyyy")}
-              <span className="bg-[#D9D9D9] w-1 h-1 inline-block rounded-full mx-1" />
-              From {ticket.from}
-            </h3>
-          </div>
-        </div>
-        <div className="flex gap-5 items-center">
-          <TbPencilMinus className="text-3xl text-blackColor" />
-          <FaRegTrashCan className="text-[#FF4444] text-2xl" />
-        </div>
-      </header>
+    <div className="py-5 px-5 rounded-sm shadow-md shadow-gray-200 flex-1">
+      <Header {...ticket} />
+      <TicketDetails ticket={ticket} />
     </div>
   );
 };
