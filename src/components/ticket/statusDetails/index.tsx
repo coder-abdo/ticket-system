@@ -21,7 +21,7 @@ export const StatusSide: FC<Props> = ({ id }) => {
   return (
     <aside>
       <StatusOptions status={status} statue={ticket.status} />
-      <StatusInformations />
+      <StatusInformations id={id} />
     </aside>
   );
 };

@@ -1,26 +1,37 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useFetchTicketById } from "@/hooks/useFetch";
+import { FC } from "react";
 import { TbTicket, TbClockHour4 } from "react-icons/tb";
-export const StatusInformations = () => {
+import { Timeline } from "@/components/ticket/statusDetails/timeline";
+import { Details } from "@/components/ticket/statusDetails/details";
+import { Trigger } from "@/components/ticket/statusDetails/trigger";
+interface Props {
+  id: number;
+}
+
+export const StatusInformations: FC<Props> = ({ id }) => {
+  const { ticket } = useFetchTicketById(id);
   return (
-    <Tabs defaultValue="details" className="shadow-sm shadow-gray-300">
-      <TabsList>
+    <Tabs defaultValue="details" className="shadow-sm shadow-gray-300 p-5">
+      <TabsList className="w-full bg-transparent">
         <TabsTrigger
-          className="text-primaryBlue flex items-center gap-1"
+          className="text-primaryBlue flex items-center gap-1 bg-blue-50"
           value="details"
         >
-          <TbTicket />
-          <h5 className="text-base font-medium">Details</h5>
+          <Trigger icon={TbTicket} title="Details" />
         </TabsTrigger>
         <TabsTrigger
-          className="flex text-primaryBlue bg-blue-200 items-center gap-1"
+          className="flex text-primaryBlue items-center gap-1 bg-blue-50"
           value="timeline"
         >
-          <TbClockHour4 />
-          <h5 className="text-base font-medium">Timeline</h5>
+          <Trigger icon={TbClockHour4} title="Timeline" />
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="details">
-        <h6 className="text-base">send by</h6>
+      <TabsContent value="details" className="capitalize pt-10">
+        <Details ticket={ticket} />
+      </TabsContent>
+      <TabsContent value="timeline">
+        <Timeline />
       </TabsContent>
     </Tabs>
   );

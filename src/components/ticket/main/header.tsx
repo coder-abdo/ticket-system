@@ -2,10 +2,11 @@ import { TbPencilMinus } from "react-icons/tb";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { format } from "date-fns";
 import { FC } from "react";
+import { Ticket } from "@/types";
 interface Props extends Ticket {}
 export const Header: FC<Props> = ({ from }) => {
   return (
-    <header className="flex justify-between items-center border-b-[2px] border-b-[#F7F6F6]">
+    <header className="flex justify-between items-center pb-4 border-b-[2px] border-b-[#F7F6F6]">
       <div className="flex gap-2">
         <div className="bg-[#68005E] w-16 h-16 rounded-full" />
         <div className="capitalize">
