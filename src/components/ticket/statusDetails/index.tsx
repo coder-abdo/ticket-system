@@ -1,6 +1,7 @@
 import { useFetchStatus, useFetchTicketById } from "@/hooks/useFetch";
-import { StatusOptions } from "./statusOptions";
+import { StatusOptions } from "@/components/ticket/statusDetails/statusOptions";
 import { FC } from "react";
+import { StatusInformations } from "@/components/ticket/statusDetails/statusInformations";
 interface Props {
   id: number;
 }
@@ -18,8 +19,9 @@ export const StatusSide: FC<Props> = ({ id }) => {
     return <div>error fetching data</div>;
   }
   return (
-    <aside className="shadow-gray-200 shadow-md">
+    <aside>
       <StatusOptions status={status} statue={ticket.status} />
+      <StatusInformations />
     </aside>
   );
 };

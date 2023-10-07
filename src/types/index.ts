@@ -16,3 +16,4 @@ interface Status {
   id: number;
   name: StatusType;
 }
+export type { Ticket, Department, Status, StatusType, DepartmentType };
