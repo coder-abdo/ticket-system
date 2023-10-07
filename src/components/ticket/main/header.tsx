@@ -21,8 +21,8 @@ export const Header: FC<Props> = ({ from }) => {
         </div>
       </div>
       <div className="flex gap-5 items-center">
-        <TbPencilMinus className="text-3xl text-blackColor" />
-        <FaRegTrashCan className="text-[#FF4444] text-2xl" />
+        <TbPencilMinus className="text-3xl text-blackColor hover:cursor-pointer" />
+        <FaRegTrashCan className="text-[#FF4444] text-2xl hover:cursor-pointer" />
       </div>
     </header>
   );

@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { TicketItem } from "@/components/ticket/sidebar/ticketItem";
+import { Ticket } from "@/types";
 
 interface Props {
   tickets: Ticket[];

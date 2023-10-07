@@ -1,19 +1,10 @@
-import Navbar from "@/components/navbar";
-import { Sidebar } from "@/components/sidebar";
-import StatusSideBar from "@/components/statusSide";
+import { HomeLayout } from "@/layout/homeLayout";
 import Main from "@/components/main";
 const Home = () => {
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1 container">
-        <Navbar />
-        <main className="flex pt-4 gap-2">
-          <StatusSideBar />
-          <Main />
-        </main>
-      </div>
-    </div>
+    <HomeLayout>
+      <Main />
+    </HomeLayout>
   );
 };
 

@@ -5,6 +5,7 @@ import { TicketsMenu } from "@/components/ticket/sidebar/TicketsMenu";
 import { useTickets } from "@/hooks/useTickets";
 export const TicketSidebar = () => {
   const { isLoading, tickets } = useTickets();
+
   return (
     <aside className="w-80">
       <div className="flex gap-2 items-center pl-2">

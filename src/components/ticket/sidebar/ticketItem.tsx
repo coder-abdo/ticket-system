@@ -1,10 +1,17 @@
+import type { FC } from "react";
 import { format } from "date-fns";
-import { FC } from "react";
-
+import { Ticket } from "@/types";
+import { useNavigate } from "react-router-dom";
 interface Props {
   ticket: Ticket;
 }
 export const TicketItem: FC<Props> = ({ ticket }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/tickets/${ticket.id}`, {
+      replace: true,
+    });
+  };
   return (
     <li
       className={`border-l-4 ${
@@ -13,7 +20,8 @@ export const TicketItem: FC<Props> = ({ ticket }) => {
           : ticket.status.toLocaleLowerCase() === "Closed".toLocaleLowerCase()
           ? "border-[#5FD971]"
           : "border-[#5B8DEF]"
-      } p-2`}
+      } p-2 hover:cursor-pointer`}
+      onClick={handleClick}
     >
       <div className="flex justify-between px-2">
         <h4 className="text-sm ">User Name</h4>
