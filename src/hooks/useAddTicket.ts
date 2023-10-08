@@ -1,3 +1,4 @@
+import { Ticket } from "@/types";
 import { addTicket } from "@/utils";
 import { useMutation } from "@tanstack/react-query";
 

@@ -1,11 +1,6 @@
-import { createTicketShcema } from "@/utils";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { FiUploadCloud } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAddTicket } from "@/hooks/useAddTicket";
 import {
   Select,
   SelectContent,
@@ -14,54 +9,28 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useImageDrop } from "@/hooks/useDropImages";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useAppDispatch } from "@/app/hooks";
-import { closeCreatedModal } from "@/features/createModal/createModalSlice";
-import { addTicketToTickets } from "@/features/tickets/ticketsSlice";
-import { queryClient } from "@/app/clientQuery";
+import { closeEditModal } from "@/features/editTicketModal/editTicketModalSlice";
 import { Ticket } from "@/types";
-
-export const CreateTicketForm = () => {
-  const { getInputProps, getRootProps } = useImageDrop();
-  const { mutate } = useAddTicket();
-  const dispatch = useAppDispatch();
-
+import { FC } from "react";
+import { useUpdateTicket } from "@/hooks/useUpdateTicket";
+interface Props {
+  ticket: Ticket;
+}
+export const EditTicketForm: FC<Props> = ({ ticket }) => {
   const {
+    dispatch,
+    onHandleSubmit,
     register,
-    formState: { errors },
+    getInputProps,
+    getRootProps,
+    errors,
     handleSubmit,
-  } = useForm<z.infer<typeof createTicketShcema>>({
-    resolver: zodResolver(createTicketShcema),
-    defaultValues: {
-      subject: "",
-      from: "HR",
-      to: "IT",
-      description: "",
-    },
-  });
-  const onSubmitHandler = (values: z.infer<typeof createTicketShcema>) => {
-    const { to, description, from, subject } = values;
-    const ticket: Ticket = {
-      id: ~~(Math.random() * 1000) + 1,
-      description,
-      to,
-      from,
-      subject,
-      status: "Open",
-    };
-    mutate(ticket, {
-      onSuccess() {
-        dispatch(addTicketToTickets(ticket));
-        queryClient.invalidateQueries({ queryKey: ["tickets"] });
-        dispatch(closeCreatedModal());
-      },
-    });
-  };
+  } = useUpdateTicket(ticket);
 
   return (
-    <form onSubmit={handleSubmit(onSubmitHandler)}>
+    <form onSubmit={handleSubmit(onHandleSubmit)}>
       <div className="grid w-full max-w-sm items-center gap-3">
         <Label>
           Subject<sup>*</sup>
@@ -80,7 +49,7 @@ export const CreateTicketForm = () => {
           </Label>
           <Select {...register("from")}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="HR" />
+              <SelectValue placeholder={ticket.from} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="HR">HR</SelectItem>
@@ -95,7 +64,7 @@ export const CreateTicketForm = () => {
           </Label>
           <Select {...register("to")}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="IT" />
+              <SelectValue placeholder={ticket.to} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="HR">HR</SelectItem>
@@ -128,7 +97,7 @@ export const CreateTicketForm = () => {
       </div>
       <DialogFooter>
         <Button
-          onClick={() => dispatch(closeCreatedModal())}
+          onClick={() => dispatch(closeEditModal())}
           className="flex-1 capitalize bg-transparent border border-primaryBlue hover:bg-transparent text-gray-700 text-base font-semibold"
         >
           cancel

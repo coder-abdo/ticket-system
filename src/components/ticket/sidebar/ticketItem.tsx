@@ -2,15 +2,15 @@ import type { FC } from "react";
 import { format } from "date-fns";
 import { Ticket } from "@/types";
 import { useNavigate } from "react-router-dom";
+import { queryClient } from "@/app/clientQuery";
 interface Props {
   ticket: Ticket;
 }
 export const TicketItem: FC<Props> = ({ ticket }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/tickets/${ticket.id}`, {
-      replace: true,
-    });
+    navigate(`/tickets/${ticket.id}`);
+    queryClient.fetchQuery({ queryKey: ["ticket"], retry: true });
   };
   return (
     <li
