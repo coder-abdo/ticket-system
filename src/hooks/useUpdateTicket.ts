@@ -11,9 +11,10 @@ import { queryClient } from "@/app/clientQuery";
 import { closeEditModal } from "@/features/editTicketModal/editTicketModalSlice";
 
 export const useUpdateTicket = (ticket: Ticket) => {
+  console.log(import.meta.env.VITE_BASE_URL);
   const { mutate, error, isLoading } = useMutation({
     mutationFn: (data: Ticket) =>
-      updateTicket(import.meta.env.VITE_BASE_URL, ticket.id, data),
+      updateTicket(`${import.meta.env.VITE_BASE_URL}/tickets`, ticket.id, data),
     mutationKey: ["updateTicket"],
   });
   const dispatch = useAppDispatch();
@@ -40,7 +41,9 @@ export const useUpdateTicket = (ticket: Ticket) => {
     mutate(ticketValues, {
       onSuccess() {
         dispatch(updatedTicket(ticketValues));
-        queryClient.invalidateQueries({ queryKey: ["ticket", "tickets"] });
+        queryClient.invalidateQueries({
+          queryKey: ["ticket"],
+        });
         dispatch(closeEditModal());
       },
     });

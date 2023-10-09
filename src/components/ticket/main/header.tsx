@@ -3,8 +3,12 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { format } from "date-fns";
 import { FC } from "react";
 import { Ticket } from "@/types";
+import { useOpenEditModal } from "@/hooks/useOpenEditModal";
+import { useModalDelete } from "@/hooks/useOpenDeleteModal";
 interface Props extends Ticket {}
 export const Header: FC<Props> = ({ from }) => {
+  const { handleOpenEditModal } = useOpenEditModal();
+  const { handleOpenDeleteModal } = useModalDelete();
   return (
     <header className="flex justify-between items-center pb-4 border-b-[2px] border-b-[#F7F6F6]">
       <div className="flex gap-2">
@@ -21,8 +25,14 @@ export const Header: FC<Props> = ({ from }) => {
         </div>
       </div>
       <div className="flex gap-5 items-center">
-        <TbPencilMinus className="text-3xl text-blackColor hover:cursor-pointer" />
-        <FaRegTrashCan className="text-[#FF4444] text-2xl hover:cursor-pointer" />
+        <TbPencilMinus
+          onClick={handleOpenEditModal}
+          className="text-3xl text-blackColor hover:cursor-pointer"
+        />
+        <FaRegTrashCan
+          onClick={handleOpenDeleteModal}
+          className="text-[#FF4444] text-2xl hover:cursor-pointer"
+        />
       </div>
     </header>
   );

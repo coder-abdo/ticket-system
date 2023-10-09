@@ -30,16 +30,25 @@ const getTicket = async (url: string, id: number) => {
     }
   }
 };
-const updateTicket = async (url:string, id:number, ticket:Ticket) => {
+const updateTicket = async (url: string, id: number, ticket: Ticket) => {
   try {
-    const {data} = await axios.patch(`${url}/${id}`, ticket) 
+    const { data } = await axios.patch(`${url}/${id}`, ticket);
     return data;
   } catch (error) {
     if (error instanceof AxiosError) {
-      console.log(error.message) 
-    } 
+      console.log(error.message);
+    }
   }
-}
+};
+const deleteTicket = async (url: string, id: number) => {
+  try {
+    await axios.delete(`${url}/${id}`);
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      console.log(error.message);
+    }
+  }
+};
 const createTicketShcema = z
   .object({
     subject: z.string().nonempty({ message: "required field" }),
@@ -48,4 +57,11 @@ const createTicketShcema = z
     description: z.string().nonempty({ message: "required field" }),
   })
   .required();
-export { fetchData, createTicketShcema, addTicket, getTicket, updateTicket };
+export {
+  fetchData,
+  createTicketShcema,
+  addTicket,
+  getTicket,
+  updateTicket,
+  deleteTicket,
+};

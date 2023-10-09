@@ -1,27 +1,11 @@
 {
   "tickets": [
     {
-      "subject": "Subject 1",
-      "from": "Business",
-      "to": "IT",
-      "status": "open",
-      "description": "Description 1",
-      "id": 1
-    },
-    {
       "id": 107,
-      "description": "fjsdkfjksjfklsjfklsjfkljsk",
+      "description": "this is an updated ticket description!!",
       "to": "IT",
       "from": "HR",
-      "subject": "fsjdkfjksjfklsjkl",
-      "status": "Open"
-    },
-    {
-      "id": 333,
-      "description": "some description for that issue",
-      "to": "IT",
-      "from": "HR",
-      "subject": "new subject",
+      "subject": "updated ticket subject",
       "status": "Open"
     },
     {

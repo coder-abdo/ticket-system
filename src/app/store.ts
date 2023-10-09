@@ -5,6 +5,7 @@ import createTicketModal from "@/features/createModal/createModalSlice";
 import allTicketsReudcer from "@/features/tickets/ticketsSlice";
 import ticketReducer from "@/features/ticket/ticketSlice";
 import editTicketModalReducer from "@/features/editTicketModal/editTicketModalSlice";
+import DeleteModalReducer from "@/features/deleteModal/deleteModalSlice";
 export const store = configureStore({
   reducer: {
     addModal: addModalReducer,
@@ -13,6 +14,7 @@ export const store = configureStore({
     editTicketModal: editTicketModalReducer,
     allTickets: allTicketsReudcer,
     ticket: ticketReducer,
+    deleteModal: DeleteModalReducer,
   },
 });
 
