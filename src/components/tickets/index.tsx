@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import { Ticket } from "@/types";
 interface Props {
   tickets: Ticket[];
 }
@@ -40,23 +41,21 @@ const Tickets: FC<Props> = ({ tickets }) => {
                 Company Name
               </TableCell>
             </Link>
-              <TableCell>{ticket.to}</TableCell>
-              <TableCell>{ticket.from}</TableCell>
-              <TableCell>Internal</TableCell>
-              <TableCell>
-                {format(new Date(), "dd MMM yyyy")}
-              </TableCell>
-              <TableCell
-                className={`${
-                  ticket.status.toLowerCase() === "Open".toLowerCase()
-                    ? "bg-[#fcf7e9] text-[#FFD360]"
-                    : ticket.status.toLowerCase() === "Close".toLowerCase()
-                    ? "bg-[#ecfaee] text-[#5FD971]"
-                    : "bg-[#D0D5DD] text-primaryBlue"
-                }`}
-              >
-                {ticket.status}
-              </TableCell>
+            <TableCell>{ticket.to}</TableCell>
+            <TableCell>{ticket.from}</TableCell>
+            <TableCell>Internal</TableCell>
+            <TableCell>{format(new Date(), "dd MMM yyyy")}</TableCell>
+            <TableCell
+              className={`${
+                ticket.status.toLowerCase() === "Open".toLowerCase()
+                  ? "bg-[#fcf7e9] text-[#FFD360]"
+                  : ticket.status.toLowerCase() === "Close".toLowerCase()
+                  ? "bg-[#ecfaee] text-[#5FD971]"
+                  : "bg-[#D0D5DD] text-primaryBlue"
+              }`}
+            >
+              {ticket.status}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
